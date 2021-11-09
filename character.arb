@@ -1,0 +1,212 @@
+class Character
+    def initialize(name, clas, race, weapons=null, strength, intelligence, charisma, hp, xp, level)
+      @name = name
+      @race = race
+      @clas = clas
+      @weapons = "You have no weapons"
+      @strength = strength
+      @intelligence = intelligence
+      @charisma = charisma
+      @hp = 100
+      @xp = 0
+      @level = 1
+    end #intialize
+
+    def getName()
+        return(@name)
+    end
+
+    def getClass()
+        return(@clas)
+    end
+
+    def getRace()
+        return(@race)
+    end
+
+    def getWeapons()
+        return(@weapons)
+    end
+
+    def getStrength()
+        return(@strength)
+    end
+
+    def setStrength()
+        #3d6
+        puts "You are about to roll for your strength score. This will influence the damage you do in battle."
+        i = 0
+        @strength = 0
+        while i < 3
+            puts "Do you want to roll the dice for your strength score?"
+            answer = gets
+            random = rand(1..6)
+            puts random
+            @strength = @strength + random
+            i = i + 1
+        end
+    end
+
+    def getStrengthAdv()
+        adv = 0
+        if @strength == 3 or @strength == 4
+            adv = -3
+        elsif @strength == 5 or @strength == 6
+            adv = -2
+        elsif @strength == 7 or @strength == 8
+            adv = -1
+        elsif @strength == 9 or @strength == 10
+            adv = 0
+        elsif @strength == 11 or @strength == 12
+            adv = 1
+        elsif @strength == 13 or @strength == 14
+            adv = 2
+        elsif @strength == 15 or @strength == 16
+            adv = 3
+        else
+            adv = 4
+        end
+        return(adv)
+    end
+
+    def getIntelligence()
+        return(@intelligence)
+    end
+
+    def setIntelligence()
+        #3d6
+        puts "You are about to roll for your intelligence score. This score will determine the helpfulness of hints you recieve in the game."
+        i = 0
+        @intelligence = 0
+        while i < 3
+            puts "Do you want to roll the dice for your intelligence score?"
+            answer = gets
+            random = rand(1..6)
+            puts random
+            @intelligence = @intelligence + random
+            i = i + 1
+        end
+    end
+
+    def getIntelligenceAdv()
+        adv = 0
+        if @intelligence == 3 or @intelligence == 4
+            adv = -3
+        elsif @intelligence == 5 or @intelligence == 6
+            adv = -2
+        elsif @intelligence == 7 or @intelligence == 8
+            adv = -1
+        elsif @intelligence == 9 or @intelligence == 10
+            adv = 0
+        elsif @intelligence == 11 or @intelligence == 12
+            adv = 1
+        elsif @intelligence == 13 or @intelligence == 14
+            adv = 2
+        elsif @intelligence == 15 or @intelligence == 16
+            adv = 3
+        else
+            adv = 4
+        end
+        return(adv)
+    end
+
+    def getCharisma()
+        return(@charisma)
+    end
+
+    def setCharisma()
+        #3d6
+        puts "You are about to roll for your charisma score. This will influence what kind of influence you have in conversation with other people you encounter."
+        i = 0
+        @charisma = 0
+        while i < 3
+            puts "Do you want to roll the dice for your charisma score?"
+            answer = gets
+            random = rand(1..6)
+            puts random
+            @charisma = @charisma + random
+            i = i + 1
+        end
+    end
+
+    def getCharismaAdv()
+        adv = 0
+        if @charisma == 3 or @charisma == 4
+            adv = -3
+        elsif @charisma == 5 or @charisma == 6
+            adv = -2
+        elsif @charisma == 7 or @charisma == 8
+            adv = -1
+        elsif @charisma == 9 or @charisma == 10
+            adv = 0
+        elsif @charisma == 11 or @charisma == 12
+            adv = 1
+        elsif @charisma == 13 or @charisma == 14
+            adv = 2
+        elsif @charisma == 15 or @charisma == 16
+            adv = 3
+        else
+            adv = 4
+        end
+        return(adv)
+    end
+
+    def getHP()
+        return(@hp)
+    end
+
+    def getXP()
+        return(@xp)
+    end
+    
+    def getLevel()
+        return(@level)
+    end
+end #Character
+
+def mainCreateCharacter()
+    puts "What do you want to name your character? "
+    name = gets
+
+    puts "What race do you want to play?"
+    puts "Your options are: Dwarf, Elf, Gnome, Half-Elf, Half-Orc, Halfling, or Human. "
+    race = gets
+
+    puts "What class do you want to play?"
+    puts "Your options are: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, or Wizard. "
+    clas = gets
+
+    character = Character.new(name, race, clas, false, 0, 0, 0, false, false, false)
+
+    puts "Next you will roll the dice for your strength, intelligence, and charisma scores. You will roll three six sided die to do this."
+
+    character.setStrength
+    character.setIntelligence
+    character.setCharisma
+
+    puts "Your character will start out with no weapons. You also will start with 100 hit points which you can increase by gaining XP."
+
+    puts "Name: " + character.getName
+    puts "Class: " + character.getClass
+    puts "Race: " + character.getRace
+    puts "Weapons: " + character.getWeapons
+    puts "Strength: " + character.getStrength.to_s
+    puts "Intelligence: " + character.getIntelligence.to_s
+    puts "Charisma: " + character.getCharisma.to_s
+    puts "Hit Points: " + character.getHP.to_s
+    puts "Experience Points: " + character.getXP.to_s
+    puts "Level: " + character.getLevel.to_s
+
+    puts "Strength Modifier: " + character.getStrengthAdv.to_s
+    puts "Intelligence Modifier: " + character.getIntelligenceAdv.to_s
+    puts "Charisma Modifier: " + character.getCharismaAdv.to_s
+end
+
+mainCreateCharacter()
+
+#roll dice for strength, intelligence, charisma
+    #These are basically the same functions, however they also explain the function of these scores. 
+    #So I feel that they should stay separate.
+#get advantages/disadvantages:
+    #I chose to write the function for each stat because they will be used in different scenarios. I felt it was simpler this way
+    #I am not sure I need both the charisma and intelligence stats.
