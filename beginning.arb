@@ -1,0 +1,97 @@
+load 'character.arb'
+
+def whereCanIGo(location)
+    start = [1, 2]
+    one = ['start', 3, 4]
+    two = ['start', 4, 5]
+    three = [1, 'finish']
+    four = [1, 2, 'finish']
+    five = [2, 'finish']
+    finish = [3, 4, 5]
+
+    if location == 'start'
+        return(start)
+    elsif location == 'one'
+        return(one)
+    elsif location == 'two'
+        return(two)
+    elsif location == 'three'
+        return(three)
+    elsif location == 'four'
+        return(four)
+    elsif location == 'five'
+        return(five)
+    elsif location == 'finish'
+        return(finish)
+    else
+        return('How did u do this?')
+    end
+end #whereCanIGo
+
+def getWeapon(character)
+    puts "You leave your room and enter the main dining area in the tavern you have been staying at."
+    puts "Asking around you find that no one has seen your sword, it has sapphires in the hilt. But, alas, no one has seen a sword matching your description."
+    #sleep 2
+    puts "In a rage you leave the tavern to prepare to set out a find the lost weapon."
+    puts "Once out in the market you see a weapons smith. An you enter."
+    #sleep 3
+    puts "The shop keep sees you and calls out:\n\tAye! Can I get you anything?"
+    puts "You reply:\n\tYes, I'm in need of a weapon. What do you have in stock?"
+    puts "Shop Keep:\n\tWell, I see your a " + character.getClass + " so I've got a " + character.getClassWeaponChoices[0] + ", " + character.getClassWeaponChoices[1] + ", or a " + character.getClassWeaponChoices[2] = "."
+    puts "Which weapon do you want?"
+    answer = gets
+    puts "You:\n\tCan I get a " + answer + ". By the way, have you seen a sword with shappires in the hilt being traded around here recently?"
+    character.setWeapons(answer)
+    puts "The Shop Keep considers your question and while he does that roll a charisma check. (roll)"
+    roll = gets
+    score = character.rollStat('Charisma')
+    
+    if score > 10
+        puts "hit"
+    else
+        puts "miss"
+
+    return 0 
+end #getWeapon
+
+def incitingIncident(character, completion)
+    puts "It is a bright spring morning, you wake in your room at the tavern in Alinor."
+    #sleep 2
+    puts "You notice your things have been thrown around the room and the door is slightly ajar."
+    #sleep 1
+
+    puts "1: Should you go back to bed."
+    puts "2: Or check your stuff."
+    answer = gets.to_i
+    #sleep 2
+
+    if answer == 1
+        puts "Maybe you should go check your things."
+        puts "As you look around you notice all of the contents of your travel pack spilled in the middle of the floor."
+        puts "And looking over to the side table you notice an empty scabbard. This devestates(???) you."
+        puts "This sword was your father's. He had gifted it to you on your 18th birthday."
+        puts "You gather your things and leave to go find your father's sword."
+        getWeapon(character)
+    elsif answer == 2
+        puts "Sounds like a good idea."
+        puts "As you look around you notice all of the contents of your travel pack spilled in the middle of the floor."
+        puts "And looking over to the side table you notice an empty scabbard. This devestates(???) you."
+        puts "This sword was your father's. He had gifted it to you on your 18th birthday."
+        puts "You gather your things and leave to go find your father's sword."
+        getWeapon(character)
+    else
+        puts "Select option 1 or 2."
+    end
+    completion = [1, 1, 0, 0, 0, 0, 0]
+    return completion
+end #inciting incident
+
+def beginMain()
+    completion = [0, 0, 0, 0, 0, 0, 0]
+    location = 'start'
+    character = testing()
+    puts character.to_string
+    incitingIncident(character, completion)
+end
+
+beginMain()

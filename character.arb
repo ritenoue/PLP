@@ -1,5 +1,5 @@
 class Character
-    def initialize(name, clas, race, weapons=null, strength, intelligence, charisma, hp, xp, level)
+    def initialize(name, race, clas, weapons=null, strength, intelligence, charisma, hp, xp, level)
       @name = name
       @race = race
       @clas = clas
@@ -16,16 +16,36 @@ class Character
         return(@name)
     end
 
-    def getClass()
-        return(@clas)
-    end
-
     def getRace()
         return(@race)
     end
 
+    def getRaceAdv()
+    end
+
+    def getClass()
+        return(@clas)
+    end
+
+    def getClassWeaponChoices()
+        if @clas == 'Barbarian' or @clas == 'Fighter' or @clas == 'Paladin'
+            return(['Sword', 'Broadsword', 'Mace'])
+        elsif @clas == 'Monk' or @clas == 'Ranger' or @clas == 'Rogue'
+            return(['Bow', 'Sling', 'dagger'])
+        else
+            return(['Fire Staff', 'Ice Staff', 'Lightning Staff'])
+        end
+    end
+
+    def getClassAdv()
+    end
+
     def getWeapons()
         return(@weapons)
+    end
+
+    def setWeapons(weapon)
+        @weapons = weapon
     end
 
     def getStrength()
@@ -162,6 +182,42 @@ class Character
     def getLevel()
         return(@level)
     end
+
+    def rollStat(stat)
+        if stat == 'strength'
+            adv = getStrengthAdv
+            roll = rand(1..20)
+            result = adv + roll
+            return(result)
+        elsif stat == 'intelligence'
+            adv = getIntelligenceAdv
+            roll = rand(1..20)
+            result = adv + roll
+            return(result)
+        else
+            adv = getCharismaAdv
+            roll = rand(1..20)
+            result = adv + roll
+            return(result)
+        end
+        return 0
+    end
+
+    def to_string()
+        puts "Name: " + @name
+        puts "Race: " + @race
+        puts "Class: " + @clas
+        puts "Weapons: " + @weapons
+        puts "Strength: " + @strength.to_s
+        puts "Intelligence: " + @intelligence.to_s
+        puts "Charisma: " + @charisma.to_s
+        puts "Hit Points: " + @hp.to_s
+        puts "Experience Points: " + @xp.to_s
+        puts "Level: " + @level.to_s
+        puts "Strength Modifier: " + getStrengthAdv.to_s
+        puts "Intelligence Modifier: " + getIntelligenceAdv.to_s
+        puts "Charisma Modifier: " + getCharismaAdv.to_s
+    end
 end #Character
 
 def mainCreateCharacter()
@@ -185,24 +241,16 @@ def mainCreateCharacter()
     character.setCharisma
 
     puts "Your character will start out with no weapons. You also will start with 100 hit points which you can increase by gaining XP."
-
-    puts "Name: " + character.getName
-    puts "Class: " + character.getClass
-    puts "Race: " + character.getRace
-    puts "Weapons: " + character.getWeapons
-    puts "Strength: " + character.getStrength.to_s
-    puts "Intelligence: " + character.getIntelligence.to_s
-    puts "Charisma: " + character.getCharisma.to_s
-    puts "Hit Points: " + character.getHP.to_s
-    puts "Experience Points: " + character.getXP.to_s
-    puts "Level: " + character.getLevel.to_s
-
-    puts "Strength Modifier: " + character.getStrengthAdv.to_s
-    puts "Intelligence Modifier: " + character.getIntelligenceAdv.to_s
-    puts "Charisma Modifier: " + character.getCharismaAdv.to_s
+    
+    return(character)
 end
 
-mainCreateCharacter()
+def testing()
+    character = Character.new('Boby', 'Elf', 'Cleric', false, 15, 15, 15, 100, 0, 1)
+    return(character)
+end
+
+#mainCreateCharacter()
 
 #roll dice for strength, intelligence, charisma
     #These are basically the same functions, however they also explain the function of these scores. 
