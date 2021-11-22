@@ -1,0 +1,898 @@
+module Sword
+    def swordDescription()
+        puts "Sword and Sheild."
+    end
+
+    def puncture()
+        puts "Puncture"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d8
+            puts "Please roll three eight sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def deepSlash()
+        puts "Deep Slash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def sheildBash()
+        puts "Sheild Bash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2d10
+            puts "Please roll two ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 2
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def deflectBlow()
+        #50/50
+        puts "Deflect Blow"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            disAdv = -5
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -5."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+end
+
+module Broadsword
+    def broadswordDescription()
+        puts "Damage dealer"
+    end
+
+    def uppercut()
+        puts "Uppercut"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def reverseSlash()
+        #10d6
+        puts "Reverse Slash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 15
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 14
+            puts "The attack hits"
+            #10d6
+            puts "Please roll ten six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 10
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def lunge()
+        puts "Lunge"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2d10
+            puts "Please roll three ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def parry()
+        #40/60
+        puts "Parry"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 9
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 8
+            disAdv = -4
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -4."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+end
+
+module Mace
+    def maceDescription()
+        puts "Less damage than broadsword but more likely to have attack hit."
+    end
+
+    def cleave()
+        puts "Cleave"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 9
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 8
+            puts "The attack hits"
+            #3d8
+            puts "Please roll three eight sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def bash()
+        puts "Bash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #6d6
+            puts "Please roll six six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 6
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def beserkerStrike()
+        puts "Beserker Strike"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def dodge() #Might give this ability to everyone
+        #60/40
+        puts "Dodge"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            disAdv = -3
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -3."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+end
+
+module Bow
+    def bowDescription()
+        puts "ranged damage dealer"
+    end
+
+    def snipe()
+        puts "Snipe"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def rapidFire()
+        #8d8
+        puts "Rapid Fire"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 15
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 14
+            puts "The attack hits"
+            #8d8
+            puts "Please roll eight eight sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 8
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def volley()
+        #3d10
+        puts "Volley"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d10
+            puts "Please roll three ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def poisonArrow()
+        puts "Poison Arrow"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #10d6
+            puts "Please roll ten six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 10
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+end
+
+module Sling
+    def slingDescription()
+        puts "ranged less damage but more likely to hit."
+    end
+
+    def fireVolley()
+        #hits 8
+    end
+
+    def quickShot()
+        #hits 8
+    end
+
+    def explosiveShot()
+        #hits 8
+    end
+
+    def solidHit()
+        #hits 8
+    end
+end
+
+module Dagger
+    def daggerDescription()
+        puts "stealth, multi-attack but low damage."
+    end
+
+    def assassinsBlade()
+        puts "Assassin's Blade"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2 4d4
+            puts "Please roll four four sided die twice to get the damage for this ability. (roll)"
+            roll = gets
+            j = 0
+            final = 0
+            while j < 2
+                total = 0
+                i = 0
+                while i < 4
+                    r = rand(1..4)
+                    puts r
+                    total = total + r
+                    i = i + 1
+                end
+                puts "Total: " + total.to_s
+                final = total + final
+                j = j + 1
+            end
+            puts "Total: " + final.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def speedSlice()
+        puts "Speed Slice"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d6
+            puts "Please roll three six sided die once to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def flurryOfBlows()
+        puts "Flurry of Blows"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3 2d4
+            puts "Please roll two four sided die thrice to get the damage for this ability. (roll)"
+            roll = gets
+            j = 0
+            final = 0
+            while j < 3
+                total = 0
+                i = 0
+                while i < 2
+                    r = rand(1..4)
+                    puts r
+                    total = total + r
+                    i = i + 1
+                end
+                puts "Total: " + total.to_s
+                final = total + final
+                j = j + 1
+            end
+            puts "Total: " + final.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def poisonBlade()
+        puts "Poison Blade"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d10
+            puts "Please roll three ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+end
+
+module Staff
+    def staffDescription()
+        puts "The Staff is a very powerful weapon for magic users. Staffs are best suited for damage dealing but do not provide much in the way of protection."
+    end
+
+    def eldritchBlast()
+        puts "Eldritch Blast"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2d10
+            puts "Please roll two ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 2
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def callLightning()
+        puts "Call Lightning"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 12
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 11
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def blight()
+        puts "Blight"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 14
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #8d8
+            puts "Please roll eight eight sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 8
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def disintegrate()
+        puts "Disintegrate"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 14
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #10d6
+            puts "Please roll eight six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 10
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+end
+
+module Wand
+    def wandDescription()
+        puts "The Wand is the best of both worlds for a magic user. Wands provide defense against attacks as well as dealing damage to the enemy. Although not nearly as much damage as a Staff and doesn't heal like a Crystal."
+    end
+
+    def bladeBarrier()
+        #lasts for one turn. gives the player protection or protection and damage deal
+        puts "Blade Barrier"
+        puts "First, roll to see if the defense hits. (roll)"
+        y = gets
+        #1d20, defense hits at 11, defense and damage hit at 16
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 15
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four 10 sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+            disAdv = -5
+            puts "On your opponent's next turn they will have a disadvantage of -5."
+        elsif x > 10 and x < 16
+            disAdv = -5
+            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage of -5."
+        else
+            puts "The attack misses and the barrier misses."
+        end
+    end
+
+    def darkness()
+        puts "Darkness"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 8
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 7
+            disAdv = -3
+            puts "The defense hits. On your opponent's next turn they will have a disadvantage of -3."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+
+    def blur()
+        puts "Blur"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            disAdv = -4
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -4."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+
+    def fireShield()
+        puts "Fire Sheild"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, defense hits at 8, defense and attack hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            puts "The attack hits"
+            #3d8
+            puts "Please roll three eight sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+            disAdv = -3
+            puts "On your opponent's next turn they will have a disadvantage of -3."
+        elsif x > 7 and x < 13
+            disAdv = -3
+            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage of -3."
+        else
+            puts "The barrier misses, you are afforded no protection."
+        end
+    end
+end
+
+module Crystal
+    def crystalDescription()
+        puts "The Crystal is the Staff's opposite. This weapon is a restorative tool for the magic user. It does the least damage but has the ability to restore precious hit points."
+    end
+
+    def cureWounds()
+        puts "Cure Wounds"
+        puts "First, roll to see if the heal hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The heal hits"
+            #3d8
+            puts "Please roll three eight sided die to determine the amount of health restored. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The heal misses and you gain no health."
+        end
+    end
+
+    def falseLife()
+        puts "False Life"
+        #temporary life that disapears after battle
+        puts "First, roll to see if the heal hits. (roll)"
+        y = gets
+        #1d20, hits at 12
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 11
+            puts "The attack hits"
+            #4d10
+            puts "Please roll three eight sided die to determine the amount of health restored. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The heal misses and you gain no health."
+        end
+    end
+
+    def funnelHealth()
+        puts "Funnel Health"
+        #takes health from opponent and adds it to player's health
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 14
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #10d6
+            puts "Please roll ten six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 10
+                r = rand(1..6)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+
+    def spiritualWeapon()
+        puts "Spiritual Weapon"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d10
+            puts "Please roll three ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+        else
+            puts "The attack misses and your opponent takes no damage"
+        end
+    end
+end
+
+class Weapon
+    include Sword
+    include Broadsword
+    include Mace
+    include Bow
+    include Sling
+    include Dagger
+    include Staff
+    include Wand
+    include Crystal
+    def initialize(name)
+        @name = name
+    end
+
+    def getWeaponName()
+        return(@name)
+    end
+end #Weapon Class

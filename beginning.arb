@@ -37,20 +37,22 @@ def getWeapon(character)
     #sleep 3
     puts "The shop keep sees you and calls out:\n\tAye! Can I get you anything?"
     puts "You reply:\n\tYes, I'm in need of a weapon. What do you have in stock?"
-    puts "Shop Keep:\n\tWell, I see your a " + character.getClass + " so I've got a " + character.getClassWeaponChoices[0] + ", " + character.getClassWeaponChoices[1] + ", or a " + character.getClassWeaponChoices[2] = "."
+    puts "Shop Keep:\n\tWell, I see your a " + character.getJob + " so I've got a " + character.getJobWeaponChoices[0] + ", " + character.getJobWeaponChoices[1] + ", or a " + character.getJobWeaponChoices[2] + "."
     puts "Which weapon do you want?"
     answer = gets
-    puts "You:\n\tCan I get a " + answer + ". By the way, have you seen a sword with shappires in the hilt being traded around here recently?"
+    puts "You:\n\tCan I get a " + answer + ".\n\tBy the way, have you seen a sword with shappires in the hilt being traded around here recently?"
     character.setWeapons(answer)
     puts "The Shop Keep considers your question and while he does that roll a charisma check. (roll)"
     roll = gets
     score = character.rollStat('Charisma')
     
     if score > 10
-        puts "hit"
+        puts "Your roll hits"
+        puts "Shop Keep:\n\tI have a friend that tends to know a lot about this sort of thing. They like to hang around <location 2>."
     else
-        puts "miss"
-
+        puts "Your roll misses"
+        puts "Shop Keep:\n\tI've seen none such weapon around here recently. I hope you all the best."
+    end
     return 0 
 end #getWeapon
 
@@ -87,6 +89,7 @@ def incitingIncident(character, completion)
 end #inciting incident
 
 def beginMain()
+    #completion = [start, one, two, three, four, five, finish]
     completion = [0, 0, 0, 0, 0, 0, 0]
     location = 'start'
     character = testing()

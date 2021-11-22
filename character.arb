@@ -1,15 +1,16 @@
+include 'Weapon.arb'
+
 class Character
-    def initialize(name, race, clas, weapons=null, strength, intelligence, charisma, hp, xp, level)
+    def initialize(name, race, job, weapons=null, strength, intelligence, charisma, hp, xp)
       @name = name
       @race = race
-      @clas = clas
+      @job = job
       @weapons = "You have no weapons"
       @strength = strength
       @intelligence = intelligence
       @charisma = charisma
       @hp = 100
       @xp = 0
-      @level = 1
     end #intialize
 
     def getName()
@@ -23,21 +24,21 @@ class Character
     def getRaceAdv()
     end
 
-    def getClass()
-        return(@clas)
+    def getJob()
+        return(@job)
     end
 
-    def getClassWeaponChoices()
-        if @clas == 'Barbarian' or @clas == 'Fighter' or @clas == 'Paladin'
+    def getJobWeaponChoices()
+        if @job == 'Barbarian' or @job == 'Fighter' or @job == 'Paladin'
             return(['Sword', 'Broadsword', 'Mace'])
-        elsif @clas == 'Monk' or @clas == 'Ranger' or @clas == 'Rogue'
-            return(['Bow', 'Sling', 'dagger'])
+        elsif @job == 'Monk' or @job == 'Ranger' or @job == 'Rogue'
+            return(['Bow', 'Sling', 'Dagger'])
         else
-            return(['Fire Staff', 'Ice Staff', 'Lightning Staff'])
+            return(['Staff', 'Wand', 'Crystal'])
         end
     end
 
-    def getClassAdv()
+    def getJobAdv()
     end
 
     def getWeapons()
@@ -45,7 +46,7 @@ class Character
     end
 
     def setWeapons(weapon)
-        @weapons = weapon
+        @weapons = Weapon.new(weapon)
     end
 
     def getStrength()
@@ -184,6 +185,7 @@ class Character
     end
 
     def rollStat(stat)
+        #1d20
         if stat == 'strength'
             adv = getStrengthAdv
             roll = rand(1..20)
@@ -232,7 +234,7 @@ def mainCreateCharacter()
     puts "Your options are: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, or Wizard. "
     clas = gets
 
-    character = Character.new(name, race, clas, false, 0, 0, 0, false, false, false)
+    character = Character.new(name, race, clas, false, 0, 0, 0, false, false)
 
     puts "Next you will roll the dice for your strength, intelligence, and charisma scores. You will roll three six sided die to do this."
 
@@ -246,15 +248,11 @@ def mainCreateCharacter()
 end
 
 def testing()
-    character = Character.new('Boby', 'Elf', 'Cleric', false, 15, 15, 15, 100, 0, 1)
+    character = Character.new('Boby', 'Elf', 'Monk', false, 15, 15, 15, 100, 0)
     return(character)
 end
 
 #mainCreateCharacter()
 
-#roll dice for strength, intelligence, charisma
-    #These are basically the same functions, however they also explain the function of these scores. 
-    #So I feel that they should stay separate.
-#get advantages/disadvantages:
-    #I chose to write the function for each stat because they will be used in different scenarios. I felt it was simpler this way
-    #I am not sure I need both the charisma and intelligence stats.
+
+#Leveling up doesn't really mean anything in the context of this game.
