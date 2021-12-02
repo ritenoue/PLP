@@ -1,0 +1,59 @@
+load 'character.arb'
+load 'gamePlay.arb'
+
+def arcaneGoods(character)
+    if character.getWeapons == "Staff" or character.getWeapons == "Wand" or character.getWeapons == "Crystal"
+        puts "You enter the shop and see various instruments and paraphernailia on shelves that like the shop walls."
+        puts "At the back of the room you see the shop clerk and approach her."
+        puts "You:\n\tHave you seen someone named Sheogorath."
+    else
+        puts "You enter the arcane goods shop... and see absolutely nothing."
+        puts "Perturbed you turn around and walk back out of the shop."
+    end
+end
+
+def tailor()
+    puts "You see the tailor in the back of the shop and approach him."
+    puts "You:\n\tWould you perhaps have seen someone named Sheogorath recently?"
+    puts "Tailor:\n\tYes, I have. He has a shop down the street to the right."
+    puts "You\n\tMuch thanks."
+    puts "You turn and leave the shop."
+end
+
+def chooseShop(character)
+    puts "Which shop would you like to go into?\n0: Tailor's Shop\n1: Arcane Goods Shop"
+    shop = gets.to_i
+    if shop == 0
+        tailor()
+    else
+        arcaneGoods(character)
+    end
+end
+
+def finalMain(character, completion)
+    character = character
+    x = checkCompletion(completion)
+    if x == 4
+        puts "You wander into town and come up on a side street."
+        puts "Should you investigate to the left or right?\n0: Left\n1: Right"
+        answer = gets.to_i
+        if answer == 0
+            puts "You see a tailor's shop and an arcane goods shop."
+            continue = "Yes"
+            i = 0
+            while i < 2
+                chooseShop(character)
+                puts "Would you like to choose a different shop?\n0: No\n1: Yes"
+                coninue = gets.to_i
+                if continue == 0
+                    break
+                else
+                    puts "Alright let's continue."
+                end
+            end
+        else
+        end
+    else
+        puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
+    end
+end

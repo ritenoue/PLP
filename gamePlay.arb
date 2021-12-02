@@ -71,15 +71,13 @@ module BobSword
 
     def deepSlash()
         puts "Deep Slash"
-        puts "First, roll to see if the attack hits. (roll)"
-        y = gets
         #1d20, hits at 13
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 12
             puts "The attack hits"
             #4d10
-            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            puts "Bob rolls four ten sided die to get the damage for this ability."
             roll = gets
             i = 0
             total = 0
@@ -92,23 +90,20 @@ module BobSword
             puts "Total: " + total.to_s
             return total, 0
         else
-            puts "The attack misses and your opponent takes no damage"
+            puts "The attack misses and you take no damage"
             return 0, 0
         end
     end
 
     def sheildBash()
         puts "Sheild Bash"
-        puts "First, roll to see if the attack hits. (roll)"
-        y = gets
         #1d20, hits at 11
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 10
             puts "The attack hits"
             #2d10
-            puts "Please roll two ten sided die to get the damage for this ability. (roll)"
-            roll = gets
+            puts "Bob rolls two ten sided die to get the damage for this ability."
             i = 0
             total = 0
             while i < 2
@@ -120,7 +115,7 @@ module BobSword
             puts "Total: " + total.to_s
             return total, 0
         else
-            puts "The attack misses and your opponent takes no damage"
+            puts "The attack misses and you take no damage"
             return 0, 0
         end
     end
@@ -128,18 +123,28 @@ module BobSword
     def deflectBlow()
         #50/50
         puts "Deflect Blow"
-        puts "First, roll to see if the attack hits. (roll)"
-        y = gets
         #1d20, hits at 11
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 10
-            disAdv = -5
-            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -5."
+            disAdv = 1
+            puts "The defense hits. On your next turn you will have a disadvantage."
             return 0, disAdv
         else
-            puts "The barrier misses, you are afforded no protection."
+            puts "The barrier misses, Bob is afforded no protection."
             return 0, 0
         end
     end
-end
+
+    def bChooseAttack(roll)
+        if roll == 0
+            return self.puncture
+        elsif roll == 1
+            return self.deepSlash
+        elsif roll == 2
+            return self.sheildBash
+        else
+            return self.deflectBlow
+        end
+    end
+end #bobSword

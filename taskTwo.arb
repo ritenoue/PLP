@@ -4,7 +4,6 @@ load 'gamePlay.arb'
 def choosePerson(character)
     puts "Who would you like to speak to?\n0: Monk\n1: Bard\n2: Sorcerer"
     answer = gets.to_i
-    #if else defaults to else each time an elsif is added
     if answer == 0
         monk()
     elsif answer == 1
@@ -26,7 +25,7 @@ def bard(character)
     score = character.rollStat('Charisma')
     if score > 10
         puts "Your roll hits"
-        puts "Bard:\n\tAh yes, I guess you'd want to know that. I saw it on my way into town. An old... acquaintance one might say would be in the market for such a weapon. His name is <bob>."
+        puts "Bard:\n\tAh yes, I guess you'd want to know that. I saw it on my way into town. An old... acquaintance one might say would be in the market for such a weapon. His name is Molag Bal."
         puts "You:\n\tI appreciate your help. I'll be on my way."
     else
         puts "Your roll misses"
@@ -35,7 +34,7 @@ def bard(character)
 end
 
 def monk()
-    puts "Monk:\n\tAh yes, I was friends with your father back in the day, I know what sword you are describing. I would guess that <bob>, an old rival, would like to have it. You can usually find him in <location 4>."
+    puts "Monk:\n\tAh yes, I was friends with your father back in the day, I know what sword you are describing. I would guess that Molag Bal, an old rival, would like to have it. You can usually find him in <location 4>."
     puts "You:\n\tThanks, that is much appreciated."
 end
 
@@ -47,7 +46,6 @@ def twoMain(character, completion)
         puts "A monk, a bard, and a sorcerer."
         continue = "Yes"
         i = 0
-        #stops even when yes is input.
         while i < 3
             choosePerson(character)
             puts "Would you like to choose a different person?\n0: No\n1: Yes"

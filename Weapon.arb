@@ -98,8 +98,8 @@ module Sword
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 10
-            disAdv = -5
-            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -5."
+            disAdv = 1
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage."
             return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
@@ -134,8 +134,10 @@ module Broadsword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -161,8 +163,10 @@ module Broadsword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -187,8 +191,10 @@ module Broadsword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -201,8 +207,9 @@ module Broadsword
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 8
-            disAdv = -4
-            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -4."
+            disAdv = 1
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
         end
@@ -235,8 +242,10 @@ module Mace
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -261,8 +270,10 @@ module Mace
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -287,8 +298,10 @@ module Mace
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -301,10 +314,12 @@ module Mace
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 12
-            disAdv = -3
-            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -3."
+            disAdv = 1
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
+            return 0, 0, 0
         end
     end
 end
@@ -428,7 +443,8 @@ module Bow
         end
     end
 end
-
+####################################################################################
+####################################################################################
 module Sling
     def slingDescription()
         puts "ranged less damage but more likely to hit."
@@ -450,7 +466,8 @@ module Sling
         #hits 8
     end
 end
-
+###################################################################################
+###################################################################################
 module Dagger
     def daggerDescription()
         puts "stealth, multi-attack but low damage."
@@ -484,8 +501,10 @@ module Dagger
                 j = j + 1
             end
             puts "Total: " + final.to_s
+            return final, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -510,8 +529,10 @@ module Dagger
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -543,8 +564,10 @@ module Dagger
                 j = j + 1
             end
             puts "Total: " + final.to_s
+            return final, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -569,8 +592,10 @@ module Dagger
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 end
@@ -601,8 +626,10 @@ module Staff
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -627,8 +654,10 @@ module Staff
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -653,8 +682,10 @@ module Staff
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -679,8 +710,10 @@ module Staff
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 end
@@ -712,13 +745,16 @@ module Wand
                 i = i + 1
             end
             puts "Total: " + total.to_s
-            disAdv = -5
-            puts "On your opponent's next turn they will have a disadvantage of -5."
+            disAdv = 1
+            puts "On your opponent's next turn they will have a disadvantage."
+            return total, disAdv, 0
         elsif x > 10 and x < 16
-            disAdv = -5
-            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage of -5."
+            disAdv = 1
+            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The attack misses and the barrier misses."
+            return 0, 0, 0
         end
     end
 
@@ -730,8 +766,9 @@ module Wand
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 7
-            disAdv = -3
-            puts "The defense hits. On your opponent's next turn they will have a disadvantage of -3."
+            disAdv = 1
+            puts "The defense hits. On your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
         end
@@ -745,10 +782,12 @@ module Wand
         x = rand(1..20)
         puts "1d20: " + x.to_s
         if x > 10
-            disAdv = -4
-            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -4."
+            disAdv = 1
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
+            return 0, 0, 0
         end
     end
 
@@ -773,13 +812,16 @@ module Wand
                 i = i + 1
             end
             puts "Total: " + total.to_s
-            disAdv = -3
-            puts "On your opponent's next turn they will have a disadvantage of -3."
+            disAdv = 1
+            puts "On your opponent's next turn they will have a disadvantage."
+            return total, disAdv, 0
         elsif x > 7 and x < 13
-            disAdv = -3
-            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage of -3."
+            disAdv = 1
+            puts "The attack misses but the barrier hits. On your opponent's next turn they will have a disadvantage."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
+            return 0, 0, 0
         end
     end
 end
@@ -810,14 +852,16 @@ module Crystal
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return 0, 0, total
         else
             puts "The heal misses and you gain no health."
+            return 0, 0, 0
         end
     end
 
     def falseLife()
         puts "False Life"
-        #temporary life that disapears after battle
+        #temporary life that disapears after battle???
         puts "First, roll to see if the heal hits. (roll)"
         y = gets
         #1d20, hits at 12
@@ -837,8 +881,10 @@ module Crystal
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return 0, 0, total
         else
             puts "The heal misses and you gain no health."
+            return 0, 0, 0
         end
     end
 
@@ -864,8 +910,10 @@ module Crystal
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, total #??? IDK that this would work
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -890,8 +938,10 @@ module Crystal
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 end
@@ -949,23 +999,23 @@ class Weapon
             end
         elsif @name == "Broadsword"
             if answer == 0
-                self.uppercut
+                return self.uppercut
             elsif answer == 1
-                self.reverseSlash
+                return self.reverseSlash
             elsif answer == 2
-                self.lunge
+                return self.lunge
             else
-                self.parry
+                return self.parry
             end
         elsif @name == "Mace"
             if answer == 0
-                self.cleave
+                return self.cleave
             elsif answer == 1
-                self.bash
+                return self.bash
             elsif answer == 2
-                self.beserkerStrike
+                return self.beserkerStrike
             else
-                self.dodge
+                return self.dodge
             end
         elsif @name == 'Bow'
             if answer == 0
@@ -979,53 +1029,53 @@ class Weapon
             end
         elsif @name == "Sling"
             if answer == 0
-                self.quickShot
+                return self.quickShot
             elsif answer == 1
-                self.fireShield
+                return self.fireShield
             elsif answer == 2
-                self.explosiveShot
+                return self.explosiveShot
             else
-                self.solidHit
+                return self.solidHit
             end
         elsif @name == "Dagger"
             if answer == 0
-                self.assassinsBlade
+                return self.assassinsBlade
             elsif answer == 1
-                self.speedSlice
+                return self.speedSlice
             elsif answer == 2
-                self.flurryOfBlows
+                return self.flurryOfBlows
             else
-                self.poisonBlade
+                return self.poisonBlade
             end
         elsif @name == "Staff"
             if answer == 0
-                self.eldritchBlast
+                return self.eldritchBlast
             elsif answer == 1
-                self.callLightning
+                return self.callLightning
             elsif answer == 2
-                self.blight
+                return self.blight
             else
-                self.disintegrate
+                return self.disintegrate
             end
         elsif @name == "Wand"
             if answer == 0
-                self.darkness
+                return self.darkness
             elsif answer == 1
-                self.bladeBarrier
+                return self.bladeBarrier
             elsif answer == 2
-                self.blur
+                return self.blur
             else
-                self.fireShield
+                return self.fireShield
             end
         else
             if answer == 0
-                self.cureWounds
+                return self.cureWounds
             elsif answer == 1
-                self.falseLife
+                return self.falseLife
             elsif answer == 2
-                self.funnelHealth
+                return self.funnelHealth
             else
-                self.spiritualWeapon
+                return self.spiritualWeapon
             end
         end
     end #doAttack

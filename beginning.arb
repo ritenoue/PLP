@@ -77,6 +77,11 @@ def beginMain()
     puts "Where do you want to travel to next?"
     puts "<location 4>"
     completion = threeMain(character, completion)
+    puts "Moving on from <location 4>..."
+    puts "Where do you want to travel to next?"
+    puts "<location 1>"
+    completion = finalMain(character, completion)
+    puts "Game Over"
 end
 
 beginMain()

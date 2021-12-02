@@ -61,8 +61,12 @@ class Character
         r = @weapons.doAttack(answer)
         damage = r[0]
         disAdv = r[1]
-        setHP(r[2])
-        return damage, disAdv
+        if r[2] != 0
+            healHP(r[2])
+            return damage, disAdv
+        else
+            return damage, disAdv
+        end
     end
 
     def getStrength()
@@ -192,7 +196,7 @@ class Character
         return(@hp)
     end
 
-    def setHP(h)
+    def healHP(h)
         @hp = @hp + h
         puts "New HP: " + @hp.to_s
     end
@@ -274,7 +278,7 @@ def mainCreateCharacter()
 end
 
 def testing()
-    character = Character.new('Boby', 'Elf', 'Monk', false, 15, 15, 15, 100, 0)
+    character = Character.new('Boby', 'Elf', 'Cleric', false, 15, 15, 15, 100, 0)
     #character.setWeapons('Bow')
     #character.chooseAttack()
     return(character)
