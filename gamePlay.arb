@@ -1,0 +1,145 @@
+def whereCanIGo(location)
+    start = [1, 2]
+    one = ['start', 3, 4]
+    two = ['start', 4, 5]
+    three = [1, 'finish']
+    four = [1, 2, 'finish']
+    five = [2, 'finish']
+    finish = [3, 4, 5]
+
+    if location == 'start'
+        return(start)
+    elsif location == 'one'
+        return(one)
+    elsif location == 'two'
+        return(two)
+    elsif location == 'three'
+        return(three)
+    elsif location == 'four'
+        return(four)
+    elsif location == 'five'
+        return(five)
+    elsif location == 'finish'
+        return(finish)
+    else
+        return('How did u do this?')
+    end
+end #whereCanIGo
+
+def checkCompletion(completion)
+    tasks = 0
+    for i in completion
+        if i == 1
+            tasks = tasks + 1
+        else
+            tasks = tasks
+        end
+    end
+    return(tasks)
+end
+
+module BobSword
+    #returns damage, disAdv
+    def swordDescription()
+        puts "Sword and Sheild."
+    end
+
+    def puncture()
+        puts "Puncture"
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "Bob's 1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #3d8
+            puts "Bob rolls three eight sided die to get the damage for this ability."
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..8)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Bob's Total: " + total.to_s
+            return total, 0
+        else
+            puts "The attack misses and you take no damage"
+            return 0, 0
+        end
+    end
+
+    def deepSlash()
+        puts "Deep Slash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 13
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 12
+            puts "The attack hits"
+            #4d10
+            puts "Please roll four ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+            return total, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0
+        end
+    end
+
+    def sheildBash()
+        puts "Sheild Bash"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2d10
+            puts "Please roll two ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 2
+                r = rand(1..10)
+                puts r
+                total = total + r
+                i = i + 1
+            end
+            puts "Total: " + total.to_s
+            return total, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0
+        end
+    end
+
+    def deflectBlow()
+        #50/50
+        puts "Deflect Blow"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            disAdv = -5
+            puts "The defense hits. on your opponent's next turn they will have a disadvantage of -5."
+            return 0, disAdv
+        else
+            puts "The barrier misses, you are afforded no protection."
+            return 0, 0
+        end
+    end
+end

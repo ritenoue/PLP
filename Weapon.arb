@@ -1,3 +1,5 @@
+#returns total, disAdv, heal
+
 module Sword
     def swordDescription()
         puts "Sword and Sheild."
@@ -24,8 +26,10 @@ module Sword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -50,8 +54,10 @@ module Sword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -76,8 +82,10 @@ module Sword
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -92,8 +100,10 @@ module Sword
         if x > 10
             disAdv = -5
             puts "The defense hits. on your opponent's next turn they will have a disadvantage of -5."
+            return 0, disAdv, 0
         else
             puts "The barrier misses, you are afforded no protection."
+            return 0, 0, 0
         end
     end
 end
@@ -325,8 +335,10 @@ module Bow
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -352,8 +364,10 @@ module Bow
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -379,8 +393,10 @@ module Bow
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 
@@ -405,8 +421,10 @@ module Bow
                 i = i + 1
             end
             puts "Total: " + total.to_s
+            return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
         end
     end
 end
@@ -895,4 +913,123 @@ class Weapon
     def getWeaponName()
         return(@name)
     end
+
+    def getAttacks()
+        if @name == "Sword"
+            return "0: Puncture\n1: Deep Slash\n2: Shield Bash\n3: Deflect Blows"
+        elsif @name == "Broadsword"
+            return "0: Uppercut\n1: Reverse Slash\n2: Lunge\n3: Parry"
+        elsif @name == "Mace"
+            return "0: Cleave\n1: Bash\n2: Berserker Strike\n3: Dodge"
+        elsif @name == 'Bow'
+            return "0: Snipe\n1: Rapid Fire\n2: Volley\n3: Poison Arrow"
+        elsif @name == "Sling"
+            return "0: Quick Shot\n1: Fire Volley\n2: Explosive Shot\n3: Solid Shot"
+        elsif @name == "Dagger"
+            return "0: Assassin's Blade\n1: Speed Slice\n2: Flurry of Blows\n3: Poison Blade"
+        elsif @name == "Staff"
+            return "0: Eldritch Blast\n1: Call Lightning\n2: Blight\n3: Disintigrate"
+        elsif @name == "Wand"
+            return "0: Darkness\n1: Blade Barrier\n2: Blur\n3: Fire Sheild"
+        else
+            return "0: Cure Wounds\n1: False Life\n2: Funnel Health\n3: Spiritual Weapon"
+        end
+    end
+
+    def doAttack(answer)
+        if @name == "Sword"
+            if answer == 0
+                return self.puncture
+            elsif answer == 1
+                return self.deepSlash
+            elsif answer == 2
+                return self.sheildBash
+            else
+                return self.deflectBlow
+            end
+        elsif @name == "Broadsword"
+            if answer == 0
+                self.uppercut
+            elsif answer == 1
+                self.reverseSlash
+            elsif answer == 2
+                self.lunge
+            else
+                self.parry
+            end
+        elsif @name == "Mace"
+            if answer == 0
+                self.cleave
+            elsif answer == 1
+                self.bash
+            elsif answer == 2
+                self.beserkerStrike
+            else
+                self.dodge
+            end
+        elsif @name == 'Bow'
+            if answer == 0
+                return self.snipe
+            elsif answer == 1
+                return self.rapidFire
+            elsif answer == 2
+                return self.volley
+            else
+                return self.poisonArrow
+            end
+        elsif @name == "Sling"
+            if answer == 0
+                self.quickShot
+            elsif answer == 1
+                self.fireShield
+            elsif answer == 2
+                self.explosiveShot
+            else
+                self.solidHit
+            end
+        elsif @name == "Dagger"
+            if answer == 0
+                self.assassinsBlade
+            elsif answer == 1
+                self.speedSlice
+            elsif answer == 2
+                self.flurryOfBlows
+            else
+                self.poisonBlade
+            end
+        elsif @name == "Staff"
+            if answer == 0
+                self.eldritchBlast
+            elsif answer == 1
+                self.callLightning
+            elsif answer == 2
+                self.blight
+            else
+                self.disintegrate
+            end
+        elsif @name == "Wand"
+            if answer == 0
+                self.darkness
+            elsif answer == 1
+                self.bladeBarrier
+            elsif answer == 2
+                self.blur
+            else
+                self.fireShield
+            end
+        else
+            if answer == 0
+                self.cureWounds
+            elsif answer == 1
+                self.falseLife
+            elsif answer == 2
+                self.funnelHealth
+            else
+                self.spiritualWeapon
+            end
+        end
+    end #doAttack
 end #Weapon Class
+
+#weapon = Weapon.new("Sword")
+#puts weapon.getAttacks

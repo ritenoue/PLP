@@ -1,0 +1,49 @@
+load 'character.arb'
+load 'gamePlay.arb'
+
+def bard(character)
+    puts "Bard:\n\tPerhaps I've seen it."
+    puts "You:\n\tWhat do you mean 'Perhaps you've seen it'?"
+    puts "Roll a charisma check to see if the Bard has any more information for you. (roll)"
+    roll = gets
+    score = character.rollStat('Charisma')
+    if score > 10
+        puts "Your roll hits"
+        puts "Bard:\n\tAh yes, I guess you'd want to know that. I saw it on my way into town. An old... acquaintance one might say would be in the market for such a weapon. His name is <bob>."
+        puts "You:\n\tI appreciate your help. I'll be on my way."
+    else
+        puts "Your roll misses"
+        puts "Bard:\n\tWell, you see there are lots of weapons like yours. Now, I have business to attend to."
+    end
+end
+
+def monk()
+    puts "Monk:\n\tAh yes, I was friends with your father back in the day, I know what sword you are describing. I would guess that <bob>, an old rival, would like to have it. You can usually find him in <location 4>."
+    puts "You:\n\tThanks, that is much appreciated."
+end
+
+def sorcerer()
+    puts "Sorcerer:\n\tI haven't had to use such basic weapons since school. Now, please be on your way."
+end
+
+def twoMain(character, completion)
+    character = character
+    x = checkCompletion(completion)
+    if x == 2
+        puts "You see three different people as you walk up to the town square."
+        puts "A monk, a bard, and a sorcerer."
+        puts "Who would you like to speak to first?\nThe Monk\nThe Bard\nThe Sorcerer"
+        answer = gets
+        puts answer
+        #if else defaults to else each time an elsif is added
+        if answer.to_s == "Monk"
+            monk()
+        elsif answer.to_s == "Bard"
+            bard(character)
+        else
+            sorcerer()
+        end
+    else
+        puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
+    end
+end

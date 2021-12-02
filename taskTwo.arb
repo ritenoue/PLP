@@ -1,0 +1,74 @@
+load 'character.arb'
+load 'gamePlay.arb'
+
+def choosePerson(character)
+    puts "Who would you like to speak to?\n0: Monk\n1: Bard\n2: Sorcerer"
+    answer = gets.to_i
+    #if else defaults to else each time an elsif is added
+    if answer == 0
+        monk()
+    elsif answer == 1
+        bard(character)
+    else
+        sorcerer()
+    end
+end
+
+def sorcerer()
+    puts "Sorcerer:\n\tI haven't had to use such basic weapons since school. Now, please be on your way."
+end
+
+def bard(character)
+    puts "Bard:\n\tPerhaps I've seen it."
+    puts "You:\n\tWhat do you mean 'Perhaps you've seen it'?"
+    puts "Roll a charisma check to see if the Bard has any more information for you. (roll)"
+    roll = gets
+    score = character.rollStat('Charisma')
+    if score > 10
+        puts "Your roll hits"
+        puts "Bard:\n\tAh yes, I guess you'd want to know that. I saw it on my way into town. An old... acquaintance one might say would be in the market for such a weapon. His name is <bob>."
+        puts "You:\n\tI appreciate your help. I'll be on my way."
+    else
+        puts "Your roll misses"
+        puts "Bard:\n\tWell, you see there are lots of weapons like yours. Now, I have business to attend to."
+    end
+end
+
+def monk()
+    puts "Monk:\n\tAh yes, I was friends with your father back in the day, I know what sword you are describing. I would guess that <bob>, an old rival, would like to have it. You can usually find him in <location 4>."
+    puts "You:\n\tThanks, that is much appreciated."
+end
+
+def twoMain(character, completion)
+    character = character
+    x = checkCompletion(completion)
+    if x == 2
+        puts "You see three different people as you walk up to the town square."
+        puts "A monk, a bard, and a sorcerer."
+        continue = "Yes"
+        i = 0
+        #stops even when yes is input.
+        while i < 3
+            choosePerson(character)
+            puts "Would you like to choose a different person?\n0: No\n1: Yes"
+            continue = gets.to_i
+            if continue == 0
+                break
+            else
+                puts "Alright let's continue."
+            end
+            i = i + 1
+        end
+    else
+        puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
+    end
+    completion = [1, 1, 1, 0, 0, 0 , 0]
+    if i == 0
+        character.setXP(50)
+    elsif i == 1
+        character.setXP(100)
+    else
+        character.setXP(150)
+    end
+    return(completion)
+end

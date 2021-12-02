@@ -1,32 +1,7 @@
 load 'character.arb'
-
-def whereCanIGo(location)
-    start = [1, 2]
-    one = ['start', 3, 4]
-    two = ['start', 4, 5]
-    three = [1, 'finish']
-    four = [1, 2, 'finish']
-    five = [2, 'finish']
-    finish = [3, 4, 5]
-
-    if location == 'start'
-        return(start)
-    elsif location == 'one'
-        return(one)
-    elsif location == 'two'
-        return(two)
-    elsif location == 'three'
-        return(three)
-    elsif location == 'four'
-        return(four)
-    elsif location == 'five'
-        return(five)
-    elsif location == 'finish'
-        return(finish)
-    else
-        return('How did u do this?')
-    end
-end #whereCanIGo
+load 'gamePlay.arb'
+load 'taskTwo.arb'
+load 'taskThree.arb'
 
 def getWeapon(character)
     puts "You leave your room and enter the main dining area in the tavern you have been staying at."
@@ -39,7 +14,7 @@ def getWeapon(character)
     puts "You reply:\n\tYes, I'm in need of a weapon. What do you have in stock?"
     puts "Shop Keep:\n\tWell, I see your a " + character.getJob + " so I've got a " + character.getJobWeaponChoices[0] + ", " + character.getJobWeaponChoices[1] + ", or a " + character.getJobWeaponChoices[2] + "."
     puts "Which weapon do you want?"
-    answer = gets
+    answer = gets.chomp
     puts "You:\n\tCan I get a " + answer + ".\n\tBy the way, have you seen a sword with shappires in the hilt being traded around here recently?"
     character.setWeapons(answer)
     puts "The Shop Keep considers your question and while he does that roll a charisma check. (roll)"
@@ -53,7 +28,6 @@ def getWeapon(character)
         puts "Your roll misses"
         puts "Shop Keep:\n\tI've seen none such weapon around here recently. I hope you all the best."
     end
-    return 0 
 end #getWeapon
 
 def incitingIncident(character, completion)
@@ -94,7 +68,15 @@ def beginMain()
     location = 'start'
     character = testing()
     puts character.to_string
-    incitingIncident(character, completion)
+    completion = incitingIncident(character, completion)
+    puts "You exit the weapons' smith and think you should move on from this place."
+    puts "Where do you want to travel to next?"
+    puts "<location 2>"
+    completion = twoMain(character, completion)
+    puts "You leave town... "
+    puts "Where do you want to travel to next?"
+    puts "<location 4>"
+    completion = threeMain(character, completion)
 end
 
 beginMain()

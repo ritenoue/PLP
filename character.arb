@@ -1,4 +1,4 @@
-include 'Weapon.arb'
+load 'Weapon.arb'
 
 class Character
     def initialize(name, race, job, weapons=null, strength, intelligence, charisma, hp, xp)
@@ -42,11 +42,27 @@ class Character
     end
 
     def getWeapons()
-        return(@weapons)
+        return(@weapons.getWeaponName)
     end
 
     def setWeapons(weapon)
-        @weapons = Weapon.new(weapon)
+        @weapons = Weapon.new(weapon.to_s)
+    end
+
+    def chooseAttack()
+        puts "Which attack would you like to use:"
+        puts @weapons.getAttacks
+        answer = gets.to_i
+        return attack(answer)
+    end
+
+    def attack(answer)
+        #damage, disAdv, heal
+        r = @weapons.doAttack(answer)
+        damage = r[0]
+        disAdv = r[1]
+        setHP(r[2])
+        return damage, disAdv
     end
 
     def getStrength()
@@ -176,12 +192,22 @@ class Character
         return(@hp)
     end
 
+    def setHP(h)
+        @hp = @hp + h
+        puts "New HP: " + @hp.to_s
+    end
+
+    def takeDamage(d)
+        @hp = @hp - d
+        puts "New HP: " + @hp.to_s
+    end
+
     def getXP()
         return(@xp)
     end
-    
-    def getLevel()
-        return(@level)
+
+    def setXP(x)
+        @xp = x + @xp
     end
 
     def rollStat(stat)
@@ -208,7 +234,7 @@ class Character
     def to_string()
         puts "Name: " + @name
         puts "Race: " + @race
-        puts "Class: " + @clas
+        puts "Class: " + @job
         puts "Weapons: " + @weapons
         puts "Strength: " + @strength.to_s
         puts "Intelligence: " + @intelligence.to_s
@@ -249,8 +275,12 @@ end
 
 def testing()
     character = Character.new('Boby', 'Elf', 'Monk', false, 15, 15, 15, 100, 0)
+    #character.setWeapons('Bow')
+    #character.chooseAttack()
     return(character)
 end
+
+#testing()
 
 #mainCreateCharacter()
 

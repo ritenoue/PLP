@@ -1,0 +1,98 @@
+load 'character.arb'
+load 'gamePlay.arb'
+include BobSword
+
+#idk if this works lol
+def fiteNite(character)
+    puts "<bob>:\n\tFite me buddy!"
+    puts "So you draw your " + character.getWeapons + " and prepare to fight."
+    bobHP = 200
+    disAdv = 0
+    bobWeapon = "Sword"
+    i = 0
+    while bobHP > 0
+        if character.getHP > 0
+            puts "Your Turn"
+            r = character.chooseAttack
+            #r = [damage, disAdv]
+            bobHP = bobHP - r[0]
+            puts "New Bob HP: " + bobHP.to_s
+        else
+            puts "You died. Wah Wah"
+            break
+        end
+        if bobHP <= 0
+            puts "Bob has died. You win!"
+            break
+        else
+            puts "<bob's> Turn"
+            bobAttack = rand(0..3)
+            b = puncture
+            #b = [damage, disAdv]
+            character.takeDamage(b[0])
+        end
+        i = i + 1
+    end
+end
+
+def bob(character)
+    puts "As you approach town you see someone walking towards you. They look like they are going to engage you in conversation."
+    puts "This strikes you as odd. You don't know any one in town."
+    puts "How about you roll an intelligence check to see if you know this person. (roll)"
+    roll = gets
+    score = character.rollStat('Intellegence')
+    puts score
+    if score > 10
+        puts "The roll hits."
+        puts "The realization comes to you... This is <bob>."
+        puts "You decide to engage. You can either:\n0: Accuse him of theft.\n1: Ask if he's seen your fathers sword."
+        answer = gets.to_i
+        if answer == 0
+            puts "You:\n\tHey! You stole my father's sword!"
+            fiteNite(character)
+        else
+            puts "You:\n\tYou! You're <bob>, aren't you? Would you by chance have seen a sword with sapphires in the hilt?"
+            puts "<bob>:\n\tNah man, I did hear you were looking for it though. Maybe you should check if anyone in town knows where it might be."
+        end
+    else
+        puts "The roll misses."
+        puts "You do not know this person. As you pass them you turn away to avoid conversation and continue on to town market."
+    end
+end
+
+def threeMain(character, completion)
+    character = character
+    x = checkCompletion(completion)
+    if x == 3
+        bob(character)
+        puts "You enter the town market and in a side alley you see two people who look to be human."
+        puts "You decide to approach them to ask about your father's missing sword."
+        puts "Would which person would you like to ask first:\n0: Person 1\n1: Person 2"
+        answer = gets.to_i
+        if answer == 0
+            puts "Person 1 looks wary of you. Please roll a charisma check to see if they will speak with you."
+            score = character.rollStat('Charisma')
+            puts score
+            if score > 10
+                puts "The roll hits."
+                puts "You:\n\tWould you perhaps have seen a sword with sapphires in the hilt?"
+                puts "Person 1:\n\tHmm... I think you should talk to <steve>."
+                puts "Person 1 walks away and Person 2 turns to you."
+                puts "Person 2:\n\tYou can find <steve> in location 1."
+                puts "person 2 also walks away."
+            else
+                puts "The roll misses."
+                puts "Person 1 looks at you and then walks away from you."
+                puts "Person 2 with a far away look turns to you and says:\n\tYou're needed in <location 1>"
+            end
+        else
+            puts "You approach Person 2 and before you can say anything."
+            puts "Person 2:\n\tI've seen you in my dreams. You are looking for <steve>, he's in <location 1>."
+            puts "Both Person 1 and Person 2 turn and leave you in the alley."
+        end
+    else
+        puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
+    end
+    completion = [1, 1, 1, 1, 0, 0, 0]
+    return(completion)
+end
