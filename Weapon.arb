@@ -21,11 +21,11 @@ module Sword
             total = 0
             while i < 3
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -49,11 +49,11 @@ module Sword
             total = 0
             while i < 4
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -77,11 +77,11 @@ module Sword
             total = 0
             while i < 2
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -129,11 +129,11 @@ module Broadsword
             total = 0
             while i < 4
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -158,11 +158,11 @@ module Broadsword
             total = 0
             while i < 10
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -186,11 +186,11 @@ module Broadsword
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -237,11 +237,11 @@ module Mace
             total = 0
             while i < 3
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -265,11 +265,11 @@ module Mace
             total = 0
             while i < 6
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -293,11 +293,11 @@ module Mace
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -345,11 +345,11 @@ module Bow
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -374,11 +374,11 @@ module Bow
             total = 0
             while i < 8
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -403,11 +403,11 @@ module Bow
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -431,11 +431,11 @@ module Bow
             total = 0
             while i < 10
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -492,15 +492,14 @@ module Dagger
                 i = 0
                 while i < 4
                     r = rand(1..4)
-                    puts r
+                    puts "Roll " + i.to_s + ": " + r.to_s
                     total = total + r
                     i = i + 1
                 end
-                puts "Total: " + total.to_s
                 final = total + final
                 j = j + 1
             end
-            puts "Total: " + final.to_s
+            puts "Your Total Damage " + final.to_s
             return final, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -524,11 +523,11 @@ module Dagger
             total = 0
             while i < 3
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -555,15 +554,14 @@ module Dagger
                 i = 0
                 while i < 2
                     r = rand(1..4)
-                    puts r
+                    puts "Roll " + i.to_s + ": " + r.to_s
                     total = total + r
                     i = i + 1
                 end
-                puts "Total: " + total.to_s
                 final = total + final
                 j = j + 1
             end
-            puts "Total: " + final.to_s
+            puts "Your Total Damage " + final.to_s
             return final, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -587,11 +585,11 @@ module Dagger
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -621,11 +619,11 @@ module Staff
             total = 0
             while i < 2
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -649,11 +647,11 @@ module Staff
             total = 0
             while i < 4
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -677,11 +675,11 @@ module Staff
             total = 0
             while i < 8
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -705,11 +703,11 @@ module Staff
             total = 0
             while i < 10
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"
@@ -740,11 +738,11 @@ module Wand
             total = 0
             while i < 4
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             disAdv = 1
             puts "On your opponent's next turn they will have a disadvantage."
             return total, disAdv, 0
@@ -807,11 +805,11 @@ module Wand
             total = 0
             while i < 3
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             disAdv = 1
             puts "On your opponent's next turn they will have a disadvantage."
             return total, disAdv, 0
@@ -847,11 +845,11 @@ module Crystal
             total = 0
             while i < 3
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return 0, 0, total
         else
             puts "The heal misses and you gain no health."
@@ -876,11 +874,11 @@ module Crystal
             total = 0
             while i < 4
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return 0, 0, total
         else
             puts "The heal misses and you gain no health."
@@ -905,11 +903,11 @@ module Crystal
             total = 0
             while i < 10
                 r = rand(1..6)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, total #??? IDK that this would work
         else
             puts "The attack misses and your opponent takes no damage"
@@ -933,11 +931,11 @@ module Crystal
             total = 0
             while i < 3
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Your Total Damage " + total.to_s
             return total, 0, 0
         else
             puts "The attack misses and your opponent takes no damage"

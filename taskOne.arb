@@ -1,0 +1,70 @@
+load 'character.arb'
+load 'gamePlay.arb'
+
+def getWeapon(character)
+    puts "You leave your room and enter the main dining area in the tavern you have been staying at."
+    puts "Asking around you find that no one has seen your sword, it has sapphires in the hilt. But, alas, no one has seen a sword matching your description."
+    sleep 2
+    puts "In a rage you leave the tavern to prepare to set out a find the lost weapon."
+    puts "Once out in the market you see a weapons smith. An you enter."
+    sleep 3
+    puts "The shop keep sees you and calls out:\n\tAye! Can I get you anything?"
+    sleep 1
+    puts "You reply:\n\tYes, I'm in need of a weapon. What do you have in stock?"
+    sleep 1
+    puts "Shop Keep:\n\tWell, I see your a " + character.getJob + " so I've got a " + character.getJobWeaponChoices[0] + ", " + character.getJobWeaponChoices[1] + ", or a " + character.getJobWeaponChoices[2] + "."
+    sleep 1
+    puts "Which weapon do you want?"
+    answer = gets.chomp
+    sleep 1
+    puts "You:\n\tCan I get a " + answer + ".\n\tBy the way, have you seen a sword with shappires in the hilt being traded around here recently?"
+    character.setWeapons(answer)
+    sleep 1
+    puts "The Shop Keep considers your question and while he does that roll a charisma check. (roll)"
+    roll = gets.chomp
+    score = character.rollStat('charisma')
+    puts "Roll: " + score.to_s
+    sleep 1
+    
+    if score > 10
+        puts "Your roll hits"
+        puts "Shop Keep:\n\tI have a friend that tends to know a lot about this sort of thing. They like to hang around Lakeshire."
+        sleep 2
+    else
+        puts "Your roll misses"
+        puts "Shop Keep:\n\tI've seen none such weapon around here recently. I hope you all the best."
+        sleep 2
+    end
+end #getWeapon
+
+def incitingIncident(character, completion)
+    puts "It is a bright spring morning, you wake in your room at the tavern in Springwatch."
+    sleep 2
+    puts "You notice your things have been thrown around the room and the door is slightly ajar."
+    sleep 1
+
+    puts "0: Should you go back to bed."
+    puts "1: Or check your stuff."
+    answer = gets.to_i
+    sleep 2
+
+    if answer == 0
+        puts "Maybe you should go check your things."
+        puts "As you look around you notice all of the contents of your travel pack spilled in the middle of the floor."
+        puts "And looking over to the side table you notice an empty scabbard. This devestates you."
+        puts "This sword was your father's. He had gifted it to you on your 18th birthday."
+        puts "You gather your things and leave to go find your father's sword."
+        sleep 2
+        getWeapon(character)
+    else
+        puts "Sounds like a good idea."
+        puts "As you look around you notice all of the contents of your travel pack spilled in the middle of the floor."
+        puts "And looking over to the side table you notice an empty scabbard. This devestates you."
+        puts "This sword was your father's. He had gifted it to you on your 18th birthday."
+        puts "You gather your things and leave to go find your father's sword."
+        sleep 2
+        getWeapon(character)
+    end
+    completion = [1, 1, 0, 0, 0]
+    return completion
+end #inciting incident

@@ -1,30 +1,27 @@
 def whereCanIGo(location)
-    start = [1, 2]
-    one = ['start', 3, 4]
-    two = ['start', 4, 5]
-    three = [1, 'finish']
-    four = [1, 2, 'finish']
-    five = [2, 'finish']
-    finish = [3, 4, 5]
+    one = [2, 3]
+    two = [1, 3, 4]
+    three = [1, 2, 4]
+    four = [2, 3]
 
-    if location == 'start'
+    if location == 'one'
         return(start)
-    elsif location == 'one'
-        return(one)
     elsif location == 'two'
-        return(two)
+        return(one)
     elsif location == 'three'
-        return(three)
+        return(two)
     elsif location == 'four'
-        return(four)
-    elsif location == 'five'
-        return(five)
-    elsif location == 'finish'
-        return(finish)
+        return(three)
     else
         return('How did u do this?')
     end
 end #whereCanIGo
+
+def instructions()
+    puts "The game is comprised of two main parts. The first part is a Dungeons and Dragons style character creator. You will create a character made to your specifications, including Name, Race, Class, and character stats like Strength, Intelligence, and Charisma (That either help or hinder you throughout the game ;) )."
+    puts "The second part of the game is a text based adventure quest. Here you will be talking to all manner of people to accomplish your quest. The choices you make will influcence your outcome."
+    puts "Finally, it is important to remember, the game is case sensitive. \nKATIE: For the luv of god please read what you type."
+end
 
 def checkCompletion(completion)
     tasks = 0
@@ -36,7 +33,7 @@ def checkCompletion(completion)
         end
     end
     return(tasks)
-end
+end #checkCompletion
 
 module BobSword
     #returns damage, disAdv
@@ -48,20 +45,20 @@ module BobSword
         puts "Puncture"
         #1d20, hits at 11
         x = rand(1..20)
-        puts "Bob's 1d20: " + x.to_s
+        puts "Molag Bal's 1d20: " + x.to_s
         if x > 10
             puts "The attack hits"
             #3d8
-            puts "Bob rolls three eight sided die to get the damage for this ability."
+            puts "Molag Bal rolls three eight sided die to get the damage for this ability."
             i = 0
             total = 0
             while i < 3
                 r = rand(1..8)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Bob's Total: " + total.to_s
+            puts "Molag Bal's Total Damage: " + total.to_s
             return total, 0
         else
             puts "The attack misses and you take no damage"
@@ -73,21 +70,20 @@ module BobSword
         puts "Deep Slash"
         #1d20, hits at 13
         x = rand(1..20)
-        puts "1d20: " + x.to_s
+        puts "Molag Bal's 1d20: " + x.to_s
         if x > 12
             puts "The attack hits"
             #4d10
-            puts "Bob rolls four ten sided die to get the damage for this ability."
-            roll = gets
+            puts "Molag Bal rolls four ten sided die to get the damage for this ability."
             i = 0
             total = 0
             while i < 4
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Molag Bal's Total Damage: " + total.to_s
             return total, 0
         else
             puts "The attack misses and you take no damage"
@@ -99,20 +95,20 @@ module BobSword
         puts "Sheild Bash"
         #1d20, hits at 11
         x = rand(1..20)
-        puts "1d20: " + x.to_s
+        puts "Molag Bal's 1d20: " + x.to_s
         if x > 10
             puts "The attack hits"
             #2d10
-            puts "Bob rolls two ten sided die to get the damage for this ability."
+            puts "Molag Bal rolls two ten sided die to get the damage for this ability."
             i = 0
             total = 0
             while i < 2
                 r = rand(1..10)
-                puts r
+                puts "Roll " + i.to_s + ": " + r.to_s
                 total = total + r
                 i = i + 1
             end
-            puts "Total: " + total.to_s
+            puts "Molag Bal's Total Damage: " + total.to_s
             return total, 0
         else
             puts "The attack misses and you take no damage"
@@ -125,13 +121,13 @@ module BobSword
         puts "Deflect Blow"
         #1d20, hits at 11
         x = rand(1..20)
-        puts "1d20: " + x.to_s
+        puts "Molag Bal's 1d20: " + x.to_s
         if x > 10
             disAdv = 1
             puts "The defense hits. On your next turn you will have a disadvantage."
             return 0, disAdv
         else
-            puts "The barrier misses, Bob is afforded no protection."
+            puts "The barrier misses, Molag Bal is afforded no protection."
             return 0, 0
         end
     end
@@ -148,3 +144,121 @@ module BobSword
         end
     end
 end #bobSword
+
+module SteveStaff
+    def staffDescription()
+        puts "The Staff is a very powerful weapon for magic users. Staffs are best suited for damage dealing but do not provide much in the way of protection."
+    end
+
+    def eldritchBlast()
+        puts "Eldritch Blast"
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "Sheogorath's 1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #2d10
+            puts "Sheogorath rolls two ten sided die to get the damage for this ability."
+            i = 0
+            total = 0
+            while i < 2
+                r = rand(1..10)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Sheogorath's Total Damage: " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and you take no damage"
+            return 0, 0, 0
+        end
+    end
+
+    def callLightning()
+        puts "Call Lightning"
+        #1d20, hits at 12
+        x = rand(1..20)
+        puts "Sheogorath's 1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #4d10
+            puts "Sheogorath rolls four ten sided die to get the damage for this ability."
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..10)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Sheogorath's Total Damage: " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and you take no damage"
+            return 0, 0, 0
+        end
+    end
+
+    def blight()
+        puts "Blight"
+        #1d20, hits at 14
+        x = rand(1..20)
+        puts "Sheogorath's 1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #8d8
+            puts "Sheogorath rolls eight eight sided die to get the damage for this ability."
+            i = 0
+            total = 0
+            while i < 8
+                r = rand(1..8)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Sheogorath's Total Damage: " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and you take no damage"
+            return 0, 0, 0
+        end
+    end
+
+    def disintegrate()
+        puts "Disintegrate"
+        #1d20, hits at 14
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 13
+            puts "The attack hits"
+            #10d6
+            puts "Sheogorath rolls eight six sided die to get the damage for this ability."
+            i = 0
+            total = 0
+            while i < 10
+                r = rand(1..6)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Sheogorath's Total Damage: " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and you take no damage"
+            return 0, 0, 0
+        end
+    end
+
+    def sChooseAttack(roll)
+        if roll == 0
+            return self.eldritchBlast
+        elsif roll == 1
+            return self.callLightning
+        elsif roll == 2
+            return self.blight
+        else
+            return self.disintegrate
+        end
+    end
+end #steveStaff

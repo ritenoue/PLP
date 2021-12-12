@@ -2,8 +2,19 @@ load 'character.arb'
 load 'gamePlay.arb'
 include BobSword
 
+def fiteInstructions()
+    puts "ENTERING INSTRUCTION MODE:"
+    puts "You are about to fight Molag Bal... Here are a few things you should know."
+    puts "Based on the weapon you chose earlier, you will have a choice of what type of attacks you can make. Some do damage, some provide protection, and some even heal you."
+    puts "At the beginning of your turn you will select which attack you want to perform and roll at d20 to see if you make the attack. If you do you will roll again to get the damage/healing."
+    puts "Happy Fighing!"
+end
+
 def fiteNite(character)
     puts "Molag Bal:\n\tFite me buddy!"
+    sleep 2
+    fiteInstructions()
+    sleep 2
     puts "So you draw your " + character.getWeapons + " and prepare to fight."
     bobHP = 200
     disAdv = 0
@@ -12,33 +23,42 @@ def fiteNite(character)
     i = 0
     while bobHP > 0
         if character.getHP > 0
-            puts "Your Turn"
+            sleep 2
+            puts "===YOUR TURN==="
             if bDisAdv == 1
                 puts "You take disadvantage and miss a turn."
             else
                 r = character.chooseAttack
+                sleep 1
                 #r = [damage, disAdv]
                 bobHP = bobHP - r[0]
+                sleep 1
                 disAdv = r[1]
-                puts "New Molag Bal HP: " + bobHP.to_s
+                if r[0] > 0
+                    puts "Molag Bal's New HP: " + bobHP.to_s
+                    sleep 1
+                end
             end
         else
             puts "You died. Wah Wah"
-            break
+            return("Yes")
         end #Your Turn
         if bobHP <= 0
             puts "Molag Bal has died. You win!"
-            break
+            return
         else
-            puts "Molag Bal's Turn"
+            sleep 2
+            puts "===MOLAG BAL'S TURN==="
             if disAdv == 1
                 puts "Molag Bal takes a disadvantage and misses his turn."
             else
                 bobAttack = rand(0..3)
                 b = bChooseAttack(bobAttack)
+                sleep 1
                 #b = [damage, disAdv]
                 bDisAdv = b[1]
                 character.takeDamage(b[0])
+                sleep 1
             end #Bob's turn
         end
         i = i + 1
@@ -46,27 +66,34 @@ def fiteNite(character)
 end
 
 def bob(character, xp)
+    sleep 2
     puts "As you approach town you see someone walking towards you. They look like they are going to engage you in conversation."
     puts "This strikes you as odd. You don't know any one in town."
     puts "How about you roll an intelligence check to see if you know this person. (roll)"
     roll = gets
-    score = character.rollStat('Intellegence')
+    score = character.rollStat('intellegence')
+    sleep 2
     puts score
     if score > 10
         puts "The roll hits."
+        sleep 1
         puts "The realization comes to you... This is Molag Bal."
         puts "You decide to engage. You can either:\n0: Accuse him of theft.\n1: Ask if he's seen your fathers sword."
         answer = gets.to_i
         if answer == 0
+            sleep 1
             puts "You:\n\tHey! You stole my father's sword!"
-            fiteNite(character)
+            return fiteNite(character)
             xp = xp + 1
         else
+            sleep 1
             puts "You:\n\tYou! You're Molag Bal, aren't you? Would you by chance have seen a sword with sapphires in the hilt?"
+            sleep 1
             puts "Molag Bal:\n\tNah man, I did hear you were looking for it though. Maybe you should check if anyone in town knows where it might be."
         end
     else
         puts "The roll misses."
+        sleep 1
         puts "You do not know this person. As you pass them you turn away to avoid conversation and continue on to town market."
     end
 end
@@ -76,41 +103,55 @@ def threeMain(character, completion)
     character = character
     x = checkCompletion(completion)
     if x == 3
-        bob(character, xp)
-        puts "You enter the town market and in a side alley you see two people who look to be human."
-        puts "You decide to approach them to ask about your father's missing sword."
-        puts "Would which person would you like to ask first:\n0: Person 1\n1: Person 2"
-        answer = gets.to_i
-        xp = xp + 1
-        if answer == 0
-            puts "Person 1 looks wary of you. Please roll a charisma check to see if they will speak with you."
-            score = character.rollStat('Charisma')
-            puts score
-            if score > 10
-                puts "The roll hits."
-                puts "You:\n\tWould you perhaps have seen a sword with sapphires in the hilt?"
-                puts "Person 1:\n\tHmm... I think you should talk to Sheogorath."
-                puts "Person 1 walks away and Person 2 turns to you."
-                puts "Person 2:\n\tYou can find Sheogorath in location 1."
-                puts "person 2 also walks away."
-            else
-                puts "The roll misses."
-                puts "Person 1 looks at you and then walks away."
-                puts "Person 2 with a far away look turns to you and says:\n\tYou're needed in <location 1>"
-            end
+        d = bob(character, xp)
+        if d == "Yes"
+            return d
         else
-            puts "You approach Person 2 and before you can say anything."
-            puts "Person 2:\n\tI've seen you in my dreams. You are looking for Sheogorath, he's in <location 1>."
-            puts "Both Person 1 and Person 2 turn and leave you in the alley."
+            sleep 2
+            puts "You enter the town market and in a side alley you see two people who look to be human."
+            puts "You decide to approach them to ask about your father's missing sword."
+            puts "Would which person would you like to ask first:\n0: Person 1\n1: Person 2"
+            answer = gets.to_i
+            xp = xp + 1
+            if answer == 0
+                puts "Person 1 looks wary of you. Please roll a charisma check to see if they will speak with you."
+                score = character.rollStat('charisma')
+                puts "Roll: " + score.to_s
+                if score > 10
+                    puts "The roll hits."
+                    sleep 1
+                    puts "You:\n\tWould you perhaps have seen a sword with sapphires in the hilt?"
+                    sleep 1
+                    puts "Person 1:\n\tHmm... I think you should talk to Sheogorath."
+                    sleep 1
+                    puts "Person 1 walks away and Person 2 turns to you."
+                    sleep 1
+                    puts "Person 2:\n\tYou can find Sheogorath in Hull."
+                    sleep 1
+                    puts "person 2 also walks away."
+                else
+                    puts "The roll misses."
+                    sleep 1
+                    puts "Person 1 looks at you and then walks away."
+                    sleep 1
+                    puts "Person 2 with a far away look turns to you and says:\n\tYou're needed in Hull"
+                end
+            else
+                puts "You approach Person 2 and before you can say anything."
+                sleep 1
+                puts "Person 2:\n\tI've seen you in my dreams. You are looking for Sheogorath, he's in Hull."
+                sleep 1
+                puts "Both Person 1 and Person 2 turn and leave you in the alley."
+            end
         end
     else
         puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
     end
-    completion = [1, 1, 1, 1, 0, 0, 0]
+    completion = [1, 1, 1, 1, 0]
     if xp == 1
         character.setXP(75)
     else
         character.setXP(125)
-    else
-    return(completion)
+    end
+    return completion
 end

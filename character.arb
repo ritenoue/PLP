@@ -21,9 +21,6 @@ class Character
         return(@race)
     end
 
-    def getRaceAdv()
-    end
-
     def getJob()
         return(@job)
     end
@@ -36,9 +33,6 @@ class Character
         else
             return(['Staff', 'Wand', 'Crystal'])
         end
-    end
-
-    def getJobAdv()
     end
 
     def getWeapons()
@@ -79,10 +73,10 @@ class Character
         i = 0
         @strength = 0
         while i < 3
-            puts "Do you want to roll the dice for your strength score?"
+            puts "Roll the dice for your strength score?"
             answer = gets
             random = rand(1..6)
-            puts random
+            puts "Roll" + i.to_s + ": " + random.to_s
             @strength = @strength + random
             i = i + 1
         end
@@ -120,10 +114,10 @@ class Character
         i = 0
         @intelligence = 0
         while i < 3
-            puts "Do you want to roll the dice for your intelligence score?"
+            puts "Roll the dice for your intelligence score?"
             answer = gets
             random = rand(1..6)
-            puts random
+            puts "Roll" + i.to_s + ": " + random.to_s
             @intelligence = @intelligence + random
             i = i + 1
         end
@@ -161,10 +155,10 @@ class Character
         i = 0
         @charisma = 0
         while i < 3
-            puts "Do you want to roll the dice for your charisma score?"
+            puts "Roll the dice for your charisma score? (roll)"
             answer = gets
             random = rand(1..6)
-            puts random
+            puts "Roll" + i.to_s + ": " + random.to_s
             @charisma = @charisma + random
             i = i + 1
         end
@@ -196,14 +190,33 @@ class Character
         return(@hp)
     end
 
+    def setHP()
+        if @xp == 275
+            @hp = 300
+        elsif @xp == 225
+            @hp = 275
+        elsif @xp == 175
+            @hp = 250
+        elsif @xp == 150
+            @hp = 200
+        elsif @xp == 100
+            @hp = 175
+        elsif @xp == 50
+            @hp = 150
+        else #125
+            @hp = 225
+        end
+        puts "Your New HP: " + @hp.to_s
+    end
+
     def healHP(h)
         @hp = @hp + h
-        puts "New HP: " + @hp.to_s
+        puts "Your New HP healed to: " + @hp.to_s
     end
 
     def takeDamage(d)
         @hp = @hp - d
-        puts "New HP: " + @hp.to_s
+        puts "Your New HP: " + @hp.to_s
     end
 
     def getXP()
@@ -232,7 +245,6 @@ class Character
             result = adv + roll
             return(result)
         end
-        return 0
     end
 
     def to_string()
@@ -245,7 +257,6 @@ class Character
         puts "Charisma: " + @charisma.to_s
         puts "Hit Points: " + @hp.to_s
         puts "Experience Points: " + @xp.to_s
-        puts "Level: " + @level.to_s
         puts "Strength Modifier: " + getStrengthAdv.to_s
         puts "Intelligence Modifier: " + getIntelligenceAdv.to_s
         puts "Charisma Modifier: " + getCharismaAdv.to_s
@@ -253,23 +264,50 @@ class Character
 end #Character
 
 def mainCreateCharacter()
-    puts "What do you want to name your character? "
-    name = gets
-
-    puts "What race do you want to play?"
-    puts "Your options are: Dwarf, Elf, Gnome, Half-Elf, Half-Orc, Halfling, or Human. "
-    race = gets
-
-    puts "What class do you want to play?"
-    puts "Your options are: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, or Wizard. "
-    clas = gets
-
+    pc = "No"
+    while pc == "No"
+        puts "What do you want to name your character? "
+        name = gets.chomp
+        puts "Is this what you want to name your character? " + name
+        pc = gets.chomp
+    end
+    sleep 2
+    rc = "No"
+    while rc == "No"
+        puts "What race do you want to play?"
+        puts "Your options are: Dwarf, Elf, Gnome, Half-Elf, Half-Orc, Halfling, or Human. "
+        race = gets.chomp
+        if race != "Dwarf" and race != "Elf" and race != "Gnome" and race != "Half-Elf" and race != "Half-Orc" and race != "Halfling" and race != "Human"
+            puts "Hmm... that's not a race. Please choose again."
+            race = gets.chomp
+        else
+            puts "Is this the race you want to play? " + race
+            rc = gets.chomp
+        end
+    end
+    sleep 2
+    cc = "No"
+    while cc == "No"
+        puts "What class do you want to play?"
+        puts "Your options are: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, or Wizard. "
+        clas = gets.chomp
+        if clas != "Barbarian" and clas != "Bard" and clas != "Cleric" and clas != "Druid" and clas != "Fighter" and clas != "Monk" and clas != "Paladin" and clas != "Ranger" and clas != "Rogue" and clas != "Sorcerer" and clas != "Wizard"
+            puts "Hmm... that's not a class. Please choose again."
+            clas = gets.chomp
+        else
+            puts "Is this the class you want to play? " + clas
+            cc = gets.chomp
+        end
+    end
+    sleep 2
     character = Character.new(name, race, clas, false, 0, 0, 0, false, false)
 
     puts "Next you will roll the dice for your strength, intelligence, and charisma scores. You will roll three six sided die to do this."
-
+    sleep 1
     character.setStrength
+    sleep 1
     character.setIntelligence
+    sleep 1
     character.setCharisma
 
     puts "Your character will start out with no weapons. You also will start with 100 hit points which you can increase by gaining XP."
@@ -277,12 +315,12 @@ def mainCreateCharacter()
     return(character)
 end
 
-def testing()
-    character = Character.new('Boby', 'Elf', 'Cleric', false, 15, 15, 15, 100, 0)
-    #character.setWeapons('Bow')
-    #character.chooseAttack()
-    return(character)
-end
+#def testing()
+#    character = Character.new('Boby', 'Elf', 'Cleric', false, 15, 15, 15, 100, 0)
+#    character.setWeapons('Bow')
+#    character.chooseAttack()
+#    return(character)
+#end
 
 #testing()
 

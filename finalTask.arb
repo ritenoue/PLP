@@ -1,27 +1,117 @@
 load 'character.arb'
 load 'gamePlay.arb'
+include SteveStaff
+
+def finalFiteNite(character)
+    puts "You:\n\tFite Me!"
+    sleep 1
+    puts "So you get out your " + character.getWeapons + " and prepare to fight."
+    steveHP = 300
+    disAdv = 0
+    sDisAdv = 0
+    sWeapon = "Staff"
+    i = 0
+    while steveHP > 0
+        if character.getHP > 0
+            sleep 2
+            puts "===YOUR TURN==="
+            if sDisAdv == 1
+                puts "You take disadvantage and miss a turn."
+            else
+                r = character.chooseAttack
+                sleep 1
+                #r = [damage, disAdv]
+                steveHP = steveHP - r[0]
+                sleep 1
+                disAdv = r[1]
+                if r[0] > 0
+                    puts "Sheogorath's New HP: " + steveHP.to_s
+                    sleep 1
+                end
+            end
+        else
+            puts "You died. Wah Wah"
+            break
+        end #Your Turn
+        if steveHP <= 0
+            puts "Sheogorath has died. You win!"
+            puts "As you look up from Sheogorath's dead body and survey the destroyed shop you see something shiny burried under a collapsed wall."
+            puts "You begin to dig through the rubble to see what the item you saw is. As you shift away pieces of the wall you see the distinct glint of saphirres."
+            puts "Pulling the item out you see it is, in fact, your father's sword he gifted you on your 18th birthday."
+            puts "Taking it with you flee town not looking back."
+            break
+        else
+            sleep 2
+            puts "===SHEOGORATH'S TURN==="
+            if disAdv == 1
+                puts "Sheogorath takes a disadvantage and misses his turn."
+            else
+                steveAttack = rand(0..3)
+                s = sChooseAttack(steveAttack)
+                sleep 1
+                #s = [damage, disAdv]
+                sDisAdv = s[1]
+                character.takeDamage(s[0])
+                sleep 1
+            end #Steve's turn
+        end
+        i = i + 1
+    end
+end
+
+def steve(character)
+    puts "You enter the shop and see all manner of things. Some of the items entirely mundane others of suspect legality."
+    puts "At the back of the shop you see someone who must be Sheogorath."
+    puts "You approach to speak with him. What would you like to say:\n0: I know you have some experience in found items... Would you have found my father's old sword?\n1: Do you have any weapons for sale?"
+    answer = gets.to_i
+    sleep 1
+    if answer == 0
+        puts "Sheogorath:\n\tI don't think I know what you mean. Everything in this shop is street legal."
+        sleep 1
+        puts "You:\n\tWhat I mean is, I think you have something of mine. And I don't appreciate beign lied to."
+        sleep 1
+        puts "Sheogorath:\n\tWell now you've asked for it."
+        finalFiteNite(character)
+    else
+        puts "Sheogorath:\n\tDoes it look like I sell weapons?"
+        sleep 1
+        puts "You:\n\tI think you know the answer to that, theif..."
+        finalFiteNite(character)
+    end
+end
 
 def arcaneGoods(character)
     if character.getWeapons == "Staff" or character.getWeapons == "Wand" or character.getWeapons == "Crystal"
         puts "You enter the shop and see various instruments and paraphernailia on shelves that like the shop walls."
+        sleep 1
         puts "At the back of the room you see the shop clerk and approach her."
-        puts "You:\n\tHave you seen someone named Sheogorath."
+        sleep 1
+        puts "You:\n\tHave you seen someone named Sheogorath?"
+        sleep 1
+        puts "Shop Clerk:\n\tThis shop is closed didnt you know?"
+        sleep 1
     else
         puts "You enter the arcane goods shop... and see absolutely nothing."
         puts "Perturbed you turn around and walk back out of the shop."
+        sleep 1
     end
 end
 
 def tailor()
     puts "You see the tailor in the back of the shop and approach him."
+    sleep 1
     puts "You:\n\tWould you perhaps have seen someone named Sheogorath recently?"
+    sleep 1
     puts "Tailor:\n\tYes, I have. He has a shop down the street to the right."
-    puts "You\n\tMuch thanks."
+    sleep 1
+    puts "You:\n\tMuch thanks."
+    sleep 1
     puts "You turn and leave the shop."
 end
 
 def chooseShop(character)
     puts "Which shop would you like to go into?\n0: Tailor's Shop\n1: Arcane Goods Shop"
+    sleep 2
     shop = gets.to_i
     if shop == 0
         tailor()
@@ -35,23 +125,33 @@ def finalMain(character, completion)
     x = checkCompletion(completion)
     if x == 4
         puts "You wander into town and come up on a side street."
-        puts "Should you investigate to the left or right?\n0: Left\n1: Right"
-        answer = gets.to_i
-        if answer == 0
-            puts "You see a tailor's shop and an arcane goods shop."
-            continue = "Yes"
-            i = 0
-            while i < 2
-                chooseShop(character)
-                puts "Would you like to choose a different shop?\n0: No\n1: Yes"
-                coninue = gets.to_i
-                if continue == 0
-                    break
-                else
-                    puts "Alright let's continue."
+        j = 0
+        while j < 2
+            sleep 2
+            puts "Should you investigate to the left or right?\n0: Left\n1: Right"
+            answer = gets.to_i
+            if answer == 0
+                puts "Looking left you see a tailor's shop and an arcane goods shop."
+                continue = "Yes"
+                i = 0
+                while i < 2
+                    sleep 1
+                    chooseShop(character)
+                    puts "Would you like to choose a different shop?\n0: No\n1: Yes"
+                    continue = gets.to_i
+                    if continue == 0
+                        break
+                    else
+                        puts "Alright let's continue."
+                    end
+                    i = i + 1
                 end
+            else
+                puts "Looking right you see <Sheogorath's House of Happy Fun Times>."
+                steve(character)
+                return
             end
-        else
+            j = j + 1
         end
     else
         puts "Hmmm... It seems like you don't belong here right now. Maybe you should pick a different location."
