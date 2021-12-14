@@ -443,31 +443,126 @@ module Bow
         end
     end
 end
-####################################################################################
-####################################################################################
+
 module Sling
     def slingDescription()
         puts "ranged less damage but more likely to hit."
     end
 
     def fireVolley()
-        #hits 8
+        puts "Fire Volley"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 8
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 7
+            puts "The attack hits"
+            #10d6
+            puts "Please roll four four sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 4
+                r = rand(1..4)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Your Total Damage " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
+        end
     end
 
     def quickShot()
-        #hits 8
+        puts "Quick Shot"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 8
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 8
+            puts "The attack hits"
+            #10d6
+            puts "Please roll two ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 2
+                r = rand(1..10)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Your Total Damage " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
+        end
     end
 
     def explosiveShot()
-        #hits 8
+        puts "Explosive shot"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 11
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 10
+            puts "The attack hits"
+            #10d6
+            puts "Please roll three ten sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..10)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Your Total Damage " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
+        end
     end
 
     def solidHit()
-        #hits 8
+        puts "Poison Arrow"
+        puts "First, roll to see if the attack hits. (roll)"
+        y = gets
+        #1d20, hits at 8
+        x = rand(1..20)
+        puts "1d20: " + x.to_s
+        if x > 7
+            puts "The attack hits"
+            #10d6
+            puts "Please roll three six sided die to get the damage for this ability. (roll)"
+            roll = gets
+            i = 0
+            total = 0
+            while i < 3
+                r = rand(1..6)
+                puts "Roll " + i.to_s + ": " + r.to_s
+                total = total + r
+                i = i + 1
+            end
+            puts "Your Total Damage " + total.to_s
+            return total, 0, 0
+        else
+            puts "The attack misses and your opponent takes no damage"
+            return 0, 0, 0
+        end
+    end
     end
 end
-###################################################################################
-###################################################################################
+
 module Dagger
     def daggerDescription()
         puts "stealth, multi-attack but low damage."

@@ -20,7 +20,7 @@ end #whereCanIGo
 def instructions()
     puts "The game is comprised of two main parts. The first part is a Dungeons and Dragons style character creator. You will create a character made to your specifications, including Name, Race, Class, and character stats like Strength, Intelligence, and Charisma (That either help or hinder you throughout the game ;) )."
     puts "The second part of the game is a text based adventure quest. Here you will be talking to all manner of people to accomplish your quest. The choices you make will influcence your outcome."
-    puts "Finally, it is important to remember, the game is case sensitive. \nKATIE: For the luv of god please read what you type."
+    puts "Finally, it is important to remember, the game is case sensitive."
 end
 
 def checkCompletion(completion)
